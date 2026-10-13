@@ -1,4 +1,4 @@
-# duabanti-js-yourname
+# duabanti-js-newlove
 
 Your work for the DuabaNti JavaScript programme. This repo is called
 `duabanti-js-` followed by your own name, all lowercase — `duabanti-js-ama`. You
