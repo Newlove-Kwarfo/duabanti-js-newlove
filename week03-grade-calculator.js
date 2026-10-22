@@ -3,16 +3,16 @@ function average(scores) {
   for (const score of scores) {
     total += score;
     if (Number.isNaN(score)) {
-      total = 0;
+      total += 0;
     }
   }
-  if ((scores = [])) {
+  if (scores.length === 0) {
     return 0;
   }
   return total / scores.length;
 }
 
-function getGrades(score) {
+function getGrade(score) {
   if (score < 0 || score > 100) return "Invalid score";
   if (score >= 90) return "A";
   else if (score >= 80) return "B";
@@ -22,13 +22,13 @@ function getGrades(score) {
 }
 
 function isValidScore(score) {
-  if (score > 0 || score < 100) {
-    return true;
-  }
   if (Number.isNaN(score)) {
     return false;
+  } else if (score >= 0 && score <= 100) {
+    return true;
+  } else {
+    return false;
   }
-  return false;
 }
 
 function hasPassed(score) {
@@ -57,17 +57,17 @@ function printResults(scores) {
     if (isValidScore(score)) {
       console.log(`
 Score: ${score}
-Grade: ${getGrades(score)}
+Grade: ${getGrade(score)}
 Status: ${hasPassed(score)}`);
     } else {
       console.log(`
 Score: ${score}
-Grade: ${getGrades(score)}`);
+Grade: ${getGrade(score)}`);
     }
   }
   const [passed, failed] = countPassed(scores);
   console.log(`
-Overall Average Score: ${average(scores)}
+Overall Average Score: ${average(scores).toFixed(2)}
 Total Passed: ${passed}
 Total Failed: ${failed}`);
 }

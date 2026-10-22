@@ -10,13 +10,12 @@ A grade calculator built using functions that validate, assign grade & count stu
 
 ### What got me stuck
 
-I encountered no difficulties in the prgramming process. Because nce again, I performed a lot of practice exercises after I read the notes before I took the quiz and did the assignment since the practice helped significantly last week.
+I encountered no difficulties in the prgramming process. But encountered some delays while debugging the code to pass the github tests. But after a few corrections I got it right.
 
 ### Did I use AI, and how?
 
-I did not use AI in any way for form DURING the assignment, quiz or even writing this file.
-
-The only time AI was used was during the studying process to get it to generate several practice exercises based on the course content for me to test my understanding PRIOR to taking any of the assessments.
+I did not use AI in any way for form DURING theis assignment or the quiz.
+I only did about two google searches about forgotten syntax. That's all.
 
 ## Week02-converter
 
