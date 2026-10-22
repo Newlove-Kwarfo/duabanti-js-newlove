@@ -22,7 +22,7 @@ The only time AI was used was during the studying process to get it to generate 
 
 ### What I built
 
-A simplet converter built using three functions that converts cedis to dollars, kilometers to miles, and celcius to farenheit respectively and outputs it in a human readable form.
+A simple converter built using three functions that converts cedis to dollars, kilometers to miles, and celcius to farenheit respectively and outputs it in a human readable form.
 
 ### What got me stuck
 

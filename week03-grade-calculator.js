@@ -51,26 +51,30 @@ function countPassed(scores) {
   return [passed, failed];
 }
 
+function printResults(scores) {
+  console.log("SCORES REPORT");
+  for (const score of scores) {
+    if (isValidScore(score)) {
+      console.log(`
+Score: ${score}
+Grade: ${getGrades(score)}
+Status: ${hasPassed(score)}`);
+    } else {
+      console.log(`
+Score: ${score}
+Grade: ${getGrades(score)}`);
+    }
+  }
+  const [passed, failed] = countPassed(scores);
+  console.log(`
+Overall Average Score: ${average(scores)}
+Total Passed: ${passed}
+Total Failed: ${failed}`);
+}
+
 let input = process.argv.slice(2).map(Number);
 if (input === undefined || input.length === 0) {
   input = [72, 45, 91];
 }
 
-console.log("SCORES REPORT");
-for (const score of scores) {
-  if (isValidScore(score)) {
-    console.log(`
-Score: ${score}
-Grade: ${getGrades(score)}
-Status: ${hasPassed(score)}`);
-  } else {
-    console.log(`
-Score: ${score}
-Grade: ${getGrades(score)}`);
-  }
-}
-const [passed, failed] = countPassed(scores);
-console.log(`
-Overall Average Score: ${average(scores)}
-Total Passed: ${passed}
-Total Failed: ${failed}`);
+printResults(input);
