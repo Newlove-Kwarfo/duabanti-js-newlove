@@ -1,17 +1,9 @@
 //THINKING/ PLANNING NOTES
 //What does it need to do?
 
-//hold a list of expenses — description, amount in cedis, category, date
-//how one expense looks like btw:
-const expense = {
-  description: "Taxi to campus",
-  amount: 15,
-  category: "Transport",
-  date: "2026-10-26",
-};
-
+//hold a list of expenses
 // add an expense
-// show all expenses, nicely formatted
+// shows all expenses, nicely formatted
 // total the spending
 // total per category
 // show the most expensive item
@@ -20,25 +12,34 @@ const expense = {
 //FUNCTION NAMES
 //  addExpense(expenses, expense)    -> new array
 //  formatExpense(expense)           -> string
-// formatAll(expenses)              -> string
+//  formatAll(expenses)              -> string
 //  getTotal(expenses)               -> number
-// getTotalByCategory(expenses)     -> object
+//  getTotalByCategory(expenses)     -> object
 //  getMostExpensive(expenses)       -> expense or undefined
 //  isOverBudget(expenses, budget)   -> true/false
+// formatReport(expenses)            -> string
 
 // //REQUIREMENTS CHECKLIST
-// [ ] At least 5 functions, each doing one thing
+// [X] At least 5 functions, each doing one thing
 // [X] An array of expense objects (description, amount, category, date), read with dot notation as in Week 5
 // [X] An addExpense(expenses, expense) function that returns the new list
-// [halfX] A loop and a conditional, used because they are needed
+// [X] A loop and a conditional, used because they are needed
 // [X] Money formatted as cedis
-// [ ] Does not crash on an empty list
-// [ ] A README.md — what it does, how to run it, what you found hard
-// [ ] A NOTES.md — what you built, what got you stuck, whether you used AI
+// [X] Does not crash on an empty list
+// [X] A README.md — what it does, how to run it, what you found hard
+// [X] A NOTES.md — what you built, what got you stuck, whether you used AI
 
 // 1. DATA AND SETTINGS
 const BUDGET = 1000;
-const expensesE = [];
+const expensesEmpty = []; //was used to test functions catching empty inputs
+const newExpense = {
+  description: "Went to arcade",
+  amount: 236,
+  category: "Fun",
+  date: "2026-11-13",
+};
+
+const newExpenseEmpty = {};
 const expenses = [
   {
     description: "Taxi to campus",
@@ -84,44 +85,82 @@ function addExpense(expenses, expense) {
 }
 
 function formatExpense(expense) {
+  // shows one expenses, nicely formatted
+  const isEmpty = !expense || Object.keys(expense).length === 0; //checkst if expense exist or if it is empty
+  if (isEmpty) {
+    return `[date]   [description]   [category]    [amount]
+No information found in expense`;
+  }
   return `
-  ${expense.date}   ${expense.description}                GHc${expense.amount.toFixed(2)}`;
+  ${expense.date}   ${expense.description}   ${expense.category}                GHc${expense.amount.toFixed(2)}`;
+}
+
+function formatAll(expenses) {
+  // shows all expenses, nicely formatted
+  if (expenses.length === 0) return `No expenses logged yet`;
+  return `
+  DATE         DESCRIPTION     CATEGORY                  AMOUNT
+  ${expenses.map((expense) => formatExpense(expense))}`;
 }
 
 function getTotal(expenses) {
+  // totals the spending
   return expenses.reduce((sum, expense) => sum + expense.amount, 0);
 }
 
+function getTotalByCategory(expenses) {
+  // totals spending per category
+  return expenses.reduce((sum, expense) => {
+    sum[expense.category] = sum[expense.category] ?? 0 + expense.amount;
+    return sum;
+  }, {});
+}
+
 function getMostExpensive(expenses) {
+  // gets the most expensive item
   return expenses.slice().sort((a, b) => b.amount - a.amount)[0];
 }
 
 function isOverBudget(expenses, budget) {
+  // retruns true when spending passes budget
   if (getTotal(expenses) > budget) return true;
   return false;
 }
 
-// 3. The part that actually runs and prints
-//console.log(formatReport(expenses));
+function formatReport(expenses) {
+  //formats all info into a report to be printed
+}
 
+//TESTS
+/*
 // TESTING addExpense
-const newExpense = {
-  description: "Went to arcade",
-  amount: 236,
-  category: "Fun",
-  date: "2026-11-13",
-};
-
-// console.log(addExpense(expenses, newExpense));
+console.log(addExpense(expenses, newExpense));
+console.log(addExpense(expenses, newExpenseEmpty));
 
 //TESTING formatExpense
 console.log(formatExpense(newExpense));
+console.log(formatExpense(newExpenseEmpty));
 
 //TESTING getTotal
+console.log(getTotal(expensesEmpty));
 console.log(getTotal(expenses));
 
+//TESTIN getTotalByCategory
+console.log(getTotalByCategory(expensesEmpty));
+console.log(getTotalByCategory(expenses));
+
 //TESTING getMostExpensive
-console.log(getMostExpensive(expensesE));
+console.log(getMostExpensive(expensesEmpty));
+console.log(getMostExpensive(expenses));
 
 //TESTING isOverBudget
-console.log(isOverBudget(expensesE, BUDGET));
+console.log(isOverBudget(expensesEmpty, BUDGET));
+console.log(isOverBudget(expenses, BUDGET));
+
+//TESTING
+console.log(formatAll(expensesEmpty));
+console.log(formatAll(expenses));
+*/
+
+// 3. The part that actually runs and prints
+//console.log(formatReport(expenses));

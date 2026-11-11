@@ -1,19 +1,34 @@
 # Expense Tracker
- 
-A command-line tool for tracking daily spending in cedis. Built for a student in
-Accra who was losing track of where their allowance went.
- 
+
+A simple command-line tool for tracking daily spending in cedis.
+
 ## How to run it
- 
-You need Node.js 20 or newer.
- 
-    git clone https://github.com/yourname/duabanti-js-yourname
-    cd duabanti-js-yourname
-    node week06-expense-tracker.js
- 
+
+- You need Node.js 20 or newer isntalled on your machine.
+- Then open your IDE (suggested: VScode)
+- Open the terminal in the IDE. In VScode you can do this by typying Ctrl + '
+- In the terminal that appears, type the following commands one after another
+
+  ```bash
+  git clone https://github.com/Newlove-Kwarfo/duabanti-js-newlove.git
+  ```
+
+  ```bash
+  cd duabanti-js-newlove
+  ```
+
+  ```bash
+  cd expense-tracker
+  ```
+
+  ```bash
+  node week06-expense-tracker.js
+  ```
+
+  - And you're done! The result you see in the command terminal, that's the expensse tracker
+
 ## What I found hard
- 
-Getting the per-category totals out of `reduce` took me most of a Saturday. I had
-the accumulator right but kept forgetting to return it, so every pass after the
-first got `undefined`. Writing out what each pass actually held on paper is what
-fixed it.
+
+Getting the per-category totals right took me a while because I couldn't rememebr the syntax and thee meaning of its parameters. So I had to go back to that lession to revise for a bit.
+
+Figuring out how to catch empty argument errors fro the formatExpenses function was quite a sstruggle because to my dismay ```.length``` didn't work for objects. So i had to search and the syntax I found cuaght empty arguments but not non-empty ones. So in the end I consulted AI to figure out what was goin on. I understand it now
