@@ -30,7 +30,7 @@ const expense = {
 // [X] An array of expense objects (description, amount, category, date), read with dot notation as in Week 5
 // [X] An addExpense(expenses, expense) function that returns the new list
 // [halfX] A loop and a conditional, used because they are needed
-// [ ] Money formatted as cedis
+// [X] Money formatted as cedis
 // [ ] Does not crash on an empty list
 // [ ] A README.md — what it does, how to run it, what you found hard
 // [ ] A NOTES.md — what you built, what got you stuck, whether you used AI
@@ -82,7 +82,12 @@ function addExpense(expenses, expense) {
   return updatedExpenses;
 }
 
-//function formatExpense(expense) {}
+function formatExpense(expense) {
+  return `
+  ${expense.date}   ${expense.description}                GHc${expense.amount.toFixed(2)}`;
+}
+
+function getTotal(expenses) {}
 
 // 3. The part that actually runs and prints
 //console.log(formatReport(expenses));
@@ -95,4 +100,7 @@ const newExpense = {
   date: "2026-11-13",
 };
 
-console.log(addExpense(expenses, newExpense));
+// console.log(addExpense(expenses, newExpense));
+
+//TESTING formatExpense
+console.log(formatExpense(newExpense));
