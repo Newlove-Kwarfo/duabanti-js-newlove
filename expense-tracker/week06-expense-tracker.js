@@ -1,6 +1,6 @@
-//THINKING/ PLANNING NOTES
-//What does it need to do?
+//THINKING AND PLANNING NOTES
 
+//What it needs to do:
 //hold a list of expenses
 // add an expense
 // shows all expenses, nicely formatted
@@ -17,17 +17,7 @@
 //  getTotalByCategory(expenses)     -> object
 //  getMostExpensive(expenses)       -> expense or undefined
 //  isOverBudget(expenses, budget)   -> true/false
-// formatReport(expenses)            -> string
-
-// //REQUIREMENTS CHECKLIST
-// [X] At least 5 functions, each doing one thing
-// [X] An array of expense objects (description, amount, category, date), read with dot notation as in Week 5
-// [X] An addExpense(expenses, expense) function that returns the new list
-// [X] A loop and a conditional, used because they are needed
-// [X] Money formatted as cedis
-// [X] Does not crash on an empty list
-// [X] A README.md — what it does, how to run it, what you found hard
-// [X] A NOTES.md — what you built, what got you stuck, whether you used AI
+//  formatReport(expenses)            -> string
 
 // 1. DATA AND SETTINGS
 const BUDGET = 1000;
@@ -66,7 +56,7 @@ const expenses = [
     date: "2026-10-15",
   },
   {
-    description: "Grocerry shopping for the month",
+    description: "Grocerry shopping",
     amount: 315,
     category: "Food",
     date: "2026-11-03",
@@ -92,14 +82,14 @@ function formatExpense(expense) {
 No information found in expense`;
   }
   return `
-  ${expense.date}   ${expense.description}   ${expense.category}                GHc${expense.amount.toFixed(2)}`;
+  ${expense.date}   ${expense.description}   ${expense.category}               GHc${expense.amount.toFixed(2)}`;
 }
 
 function formatAll(expenses) {
   // shows all expenses, nicely formatted
   if (expenses.length === 0) return `No expenses logged yet`;
   return `
-  DATE         DESCRIPTION     CATEGORY                  AMOUNT
+  DATE         DESCRIPTION     CATEGORY                 AMOUNT
   ${expenses.map((expense) => formatExpense(expense))}`;
 }
 
@@ -129,6 +119,16 @@ function isOverBudget(expenses, budget) {
 
 function formatReport(expenses) {
   //formats all info into a report to be printed
+
+  return `
+                            EXPENSE REPORT
+  -----------------------------------------------------------------
+  ${formatAll(expenses)}
+
+  BUDGET AMOUNT: ${BUDGET}
+  TOTAL SPENT: ${getTotal(expenses)}
+  OVER BUDGET STATUS: ${isOverBudget(expenses, BUDGET)}
+  `;
 }
 
 //TESTS
@@ -163,4 +163,4 @@ console.log(formatAll(expenses));
 */
 
 // 3. The part that actually runs and prints
-//console.log(formatReport(expenses));
+console.log(formatReport(expenses));
