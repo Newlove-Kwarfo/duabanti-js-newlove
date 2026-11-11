@@ -18,12 +18,13 @@ const expense = {
 // warn when spending passes a budget
 
 //FUNCTION NAMES
-// addExpense(expenses, expense)    -> new array
-// formatExpense(expense)           -> string
-// getTotal(expenses)               -> number
+//  addExpense(expenses, expense)    -> new array
+//  formatExpense(expense)           -> string
+// formatAll(expenses)              -> string
+//  getTotal(expenses)               -> number
 // getTotalByCategory(expenses)     -> object
-// getMostExpensive(expenses)       -> expense or undefined
-// isOverBudget(expenses, budget)   -> true/false
+//  getMostExpensive(expenses)       -> expense or undefined
+//  isOverBudget(expenses, budget)   -> true/false
 
 // //REQUIREMENTS CHECKLIST
 // [ ] At least 5 functions, each doing one thing
@@ -87,7 +88,18 @@ function formatExpense(expense) {
   ${expense.date}   ${expense.description}                GHc${expense.amount.toFixed(2)}`;
 }
 
-function getTotal(expenses) {}
+function getTotal(expenses) {
+  return expenses.reduce((sum, expense) => sum + expense.amount, 0);
+}
+
+function getMostExpensive(expenses) {
+  return expenses.slice().sort((a, b) => b.amount - a.amount)[0];
+}
+
+function isOverBudget(expenses, budget) {
+  if (getTotal(expenses) > budget) return true;
+  return false;
+}
 
 // 3. The part that actually runs and prints
 //console.log(formatReport(expenses));
@@ -104,3 +116,12 @@ const newExpense = {
 
 //TESTING formatExpense
 console.log(formatExpense(newExpense));
+
+//TESTING getTotal
+console.log(getTotal(expenses));
+
+//TESTING getMostExpensive
+console.log(getMostExpensive(expensesE));
+
+//TESTING isOverBudget
+console.log(isOverBudget(expensesE, BUDGET));
